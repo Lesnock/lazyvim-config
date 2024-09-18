@@ -7,3 +7,6 @@ vim.opt.pumblend = 0
 
 -- PHP intelephense instead of phpactor
 vim.g.lazyvim_php_lsp = "intelephense"
+
+-- Remove listchars
+vim.opt.list = false
