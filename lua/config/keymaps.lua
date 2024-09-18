@@ -2,6 +2,9 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+--Delete "s" keymap from LazyVim
+vim.keymap.del("n", "s")
+
 vim.keymap.set("n", "<leader>th", function()
   vim.cmd([[ToggleTerm]])
 end, { desc = "Open terminal" })
