@@ -9,6 +9,7 @@
 ---@field private renderTab fun(index: integer, tab: WinbarTabs.tab): nil
 ---@field public setCurrentTab fun(index: integer): nil
 ---@field public addNewTab fun(): nil
+---@field public closeTab fun(index): nil
 
 ---@class WinbarTabs.config
 ---@field winid? integer
@@ -18,6 +19,7 @@
 
 ---@class WinbarTabs.tab
 ---@field name string
+---@field closeable? boolean
 ---@field onEnter? fun(tabId: integer): nil
 
 ---@class WinbarTabs.config.highlight

@@ -44,6 +44,9 @@ function WinbarTabs.renderTab(index, tab)
   string = string .. "%#" .. highlight .. "#"
   string = string .. tab.name .. "%#Normal#"
   string = string .. "%X"
+  if tab.closeable then
+    string = string .. "%" .. index .. "@v:lua.CloseWinbarTab@ [x]%X"
+  end
   return string
 end
 
@@ -65,12 +68,21 @@ function WinbarTabs.addNewTab()
   WinbarTabs.render()
 end
 
+function WinbarTabs.closeTab(index)
+  table.remove(WinbarTabs.tabs, index)
+  WinbarTabs.render()
+end
+
 function OnClickWinbarTab(index)
   WinbarTabs.setCurrentTab(index)
 end
 
 function AddWinbarTab()
   WinbarTabs.addNewTab()
+end
+
+function CloseWinbarTab(index)
+  WinbarTabs.closeTab(index)
 end
 
 return WinbarTabs

@@ -50,7 +50,7 @@ WinbarTabs.setup({
     active = "ActiveTab",
   },
   tabs = {
-    { name = "Headers", onEnter = onEnterHeaders },
+    { name = "Headers", closeable = true, onEnter = onEnterHeaders },
     { name = "Payload", onEnter = onEnterPayload },
   },
 })
