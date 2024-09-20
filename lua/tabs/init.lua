@@ -3,10 +3,13 @@ local WinbarTabs = {}
 
 WinbarTabs.tabs = {}
 WinbarTabs.currentTab = 1
+WinbarTabs.withNewTabButton = false
 
 function WinbarTabs.setup(config)
   WinbarTabs.tabs = config.tabs
   WinbarTabs.winid = config.winid or vim.api.nvim_get_current_win()
+
+  -- Highlights
   WinbarTabs.highlight = { normal = "Normal", active = "Normal" }
   if config.highlight and config.highlight.normal then
     WinbarTabs.highlight.normal = config.highlight.normal
@@ -14,6 +17,9 @@ function WinbarTabs.setup(config)
   if config.highlight and config.highlight.active then
     WinbarTabs.highlight.active = config.highlight.active
   end
+  --
+
+  WinbarTabs.withNewTabButton = config.withNewTabButton or false
   WinbarTabs.render()
 end
 
@@ -21,6 +27,9 @@ function WinbarTabs.render()
   local parts = {}
   for index, tab in ipairs(WinbarTabs.tabs) do
     table.insert(parts, WinbarTabs.renderTab(index, tab))
+  end
+  if WinbarTabs.withNewTabButton then
+    table.insert(parts, "%@v:lua.AddWinbarTab@[+]%X")
   end
   vim.wo[WinbarTabs.winid].winbar = table.concat(parts, " | ")
 end
@@ -32,7 +41,7 @@ function WinbarTabs.renderTab(index, tab)
   if WinbarTabs.currentTab == index then
     highlight = WinbarTabs.highlight.active
   end
-  string = string .. "%-50#" .. highlight .. "#"
+  string = string .. "%#" .. highlight .. "#"
   string = string .. tab.name .. "%#Normal#"
   string = string .. "%X"
   return string
@@ -51,8 +60,17 @@ function WinbarTabs.setCurrentTab(index)
   WinbarTabs.render()
 end
 
+function WinbarTabs.addNewTab()
+  table.insert(WinbarTabs.tabs, { name = "New Tab" })
+  WinbarTabs.render()
+end
+
 function OnClickWinbarTab(index)
   WinbarTabs.setCurrentTab(index)
+end
+
+function AddWinbarTab()
+  WinbarTabs.addNewTab()
 end
 
 return WinbarTabs

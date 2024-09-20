@@ -3,15 +3,18 @@
 ---@field private currentTab integer
 ---@field private winid integer
 ---@field private highlight WinbarTabs.config.highlight
+---@field private withNewTabButton boolean
 ---@field public setup fun(config: WinbarTabs.config)
 ---@field private render fun(active?: integer): nil
 ---@field private renderTab fun(index: integer, tab: WinbarTabs.tab): nil
 ---@field public setCurrentTab fun(index: integer): nil
+---@field public addNewTab fun(): nil
 
 ---@class WinbarTabs.config
 ---@field winid? integer
 ---@field tabs WinbarTabs.tab[]
 ---@field highlight? WinbarTabs.config.highlight
+---@field withNewTabButton? boolean
 
 ---@class WinbarTabs.tab
 ---@field name string

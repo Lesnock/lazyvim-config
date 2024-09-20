@@ -45,6 +45,7 @@ vim.api.nvim_set_hl(0, "ActiveTab", { underline = true })
 
 WinbarTabs.setup({
   winid = winid,
+  withNewTabButton = true,
   highlight = {
     active = "ActiveTab",
   },
