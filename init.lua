@@ -31,23 +31,13 @@ end
 local headersBuffer = createHeadersBuffer()
 local payloadHeaders = createPayloadBuffer()
 
-vim.api.nvim_win_set_buf(winid, headersBuffer)
-
-local function onEnterHeaders()
-  vim.api.nvim_win_set_buf(winid, headersBuffer)
-end
-
-local function onEnterPayload()
-  vim.api.nvim_win_set_buf(winid, payloadHeaders)
-end
-
 WinbarTabs.setup({
   winid = winid,
   highlight = {
     active = "Question",
   },
   tabs = {
-    { name = "Headers", closeable = true, onEnter = onEnterHeaders },
-    { name = "Payload", onEnter = onEnterPayload },
+    { name = "Headers", closeable = true, buffer = headersBuffer },
+    { name = "Payload", buffer = payloadHeaders },
   },
 })

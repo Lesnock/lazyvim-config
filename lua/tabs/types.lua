@@ -4,11 +4,12 @@
 ---@field private winid integer
 ---@field private highlight WinbarTabs.config.highlight
 ---@field public setup fun(config: WinbarTabs.config)
----@field private render fun(active?: integer): nil
----@field private renderTab fun(index: integer, tab: WinbarTabs.tab): nil
 ---@field public setCurrentTab fun(index: integer): nil
 ---@field public addTab fun(tab: WinbarTabs.tab): nil
 ---@field public closeTab fun(index): nil
+---@field private render fun(active?: integer): nil
+---@field private renderTab fun(index: integer, tab: WinbarTabs.tab): nil
+---@field private changeBuffer fun(bufnr: integer): nil
 
 ---@class WinbarTabs.config
 ---@field winid? integer
@@ -18,6 +19,7 @@
 ---@class WinbarTabs.tab
 ---@field name string
 ---@field closeable? boolean
+---@field buffer? integer
 ---@field onEnter? fun(tabId: integer): nil
 
 ---@class WinbarTabs.config.highlight

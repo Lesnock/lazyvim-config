@@ -16,6 +16,10 @@ function WinbarTabs.setup(config)
     WinbarTabs.highlight.active = config.highlight.active
   end
 
+  if WinbarTabs.tabs[1].buffer then
+    WinbarTabs.changeBuffer(WinbarTabs.tabs[1].buffer)
+  end
+  WinbarTabs.setCurrentTab(1)
   WinbarTabs.render()
 end
 
@@ -54,8 +58,11 @@ function WinbarTabs.setCurrentTab(index)
     return
   end
   WinbarTabs.currentTab = index
-  WinbarTabs.render()
   local tab = WinbarTabs.tabs[index]
+  if tab.buffer then
+    WinbarTabs.changeBuffer(tab.buffer)
+  end
+
   if tab.onEnter then
     tab.onEnter(index)
   end
@@ -72,6 +79,11 @@ end
 function WinbarTabs.closeTab(index)
   table.remove(WinbarTabs.tabs, index)
   WinbarTabs.render()
+end
+
+--- Change buffer of window
+function WinbarTabs.changeBuffer(bufnr)
+  vim.api.nvim_win_set_buf(WinbarTabs.winid, bufnr)
 end
 
 function OnClickWinbarTab(index)
