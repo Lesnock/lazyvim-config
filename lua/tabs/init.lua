@@ -36,17 +36,18 @@ end
 
 function WinbarTabs.renderTab(index, tab)
   local string = ""
-  --string = string .. "%" .. index .. "@v:lua.OnClickWinbarTab@"
+  string = string .. "%" .. index .. "@v:lua.OnClickWinbarTab@"
   local highlight = WinbarTabs.highlight.normal
   if WinbarTabs.currentTab == index then
     highlight = WinbarTabs.highlight.active
   end
   string = string .. "%#" .. highlight .. "#"
-  string = string .. string.format("%-20s", tab.name) .. "%#Normal#"
-  --string = string .. "%X"
+  string = string .. string.format("%-20s", tab.name)
+  string = string .. "%X"
   if tab.closeable then
-    --string = string .. "%" .. index .. "@v:lua.CloseWinbarTab@%X"
+    string = string .. "%" .. index .. "@v:lua.CloseWinbarTab@%X"
   end
+  string = string .. "%#" .. WinbarTabs.highlight.normal .. "#"
   return string
 end
 
