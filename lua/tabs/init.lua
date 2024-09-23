@@ -85,6 +85,12 @@ function WinbarTabs.closeTab(index)
   WinbarTabs.render()
 end
 
+--- Rename a tab
+function WinbarTabs.renameTab(index, name)
+  WinbarTabs.tabs[index].name = name
+  WinbarTabs.render()
+end
+
 --- Change buffer of window
 function WinbarTabs.changeBuffer(bufnr)
   vim.api.nvim_win_set_buf(WinbarTabs.winid, bufnr)

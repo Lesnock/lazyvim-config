@@ -7,6 +7,7 @@
 ---@field public setCurrentTab fun(index: integer): nil
 ---@field public addTab fun(tab: WinbarTabs.tab): nil
 ---@field public closeTab fun(index): nil
+---@field public renameTab fun(index: integer, name: string): nil
 ---@field private render fun(active?: integer): nil
 ---@field private renderTab fun(index: integer, tab: WinbarTabs.tab): nil
 ---@field private changeBuffer fun(bufnr: integer): nil
