@@ -43,7 +43,6 @@ end
 
 WinbarTabs.setup({
   winid = winid,
-  withNewTabButton = true,
   highlight = {
     active = "Question",
   },
