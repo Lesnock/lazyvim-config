@@ -62,6 +62,12 @@ function WinbarTabs.setCurrentTab(index)
   WinbarTabs.render()
 end
 
+--- Add a tab
+function WinbarTabs.addTab(tab)
+  table.insert(WinbarTabs.tabs, tab)
+  WinbarTabs.render()
+end
+
 --- Close a tab by index
 function WinbarTabs.closeTab(index)
   table.remove(WinbarTabs.tabs, index)

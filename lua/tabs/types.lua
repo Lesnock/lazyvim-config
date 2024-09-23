@@ -7,6 +7,7 @@
 ---@field private render fun(active?: integer): nil
 ---@field private renderTab fun(index: integer, tab: WinbarTabs.tab): nil
 ---@field public setCurrentTab fun(index: integer): nil
+---@field public addTab fun(tab: WinbarTabs.tab): nil
 ---@field public closeTab fun(index): nil
 
 ---@class WinbarTabs.config
