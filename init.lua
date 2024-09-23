@@ -42,6 +42,12 @@ local headersBuffer = createHeadersBuffer()
 local payloadHeaders = createPayloadBuffer()
 local terminal = createTerminalBuffer()
 
+local function addTab()
+  WinbarTabs.closeTab(#WinbarTabs.tabs) -- Remove button
+  WinbarTabs.addTab({ name = "Terminal", buffer = terminal })
+  WinbarTabs.addTab({ name = "[+]", onEnter = addTab })
+end
+
 WinbarTabs.setup({
   winid = winid,
   highlight = {
@@ -50,6 +56,6 @@ WinbarTabs.setup({
   tabs = {
     { name = "Headers", closeable = true, buffer = headersBuffer },
     { name = "Payload", buffer = payloadHeaders },
-    { name = "Terminal", buffer = terminal },
+    { name = "[+]", onEnter = addTab },
   },
 })
