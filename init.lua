@@ -41,13 +41,11 @@ local function onEnterPayload()
   vim.api.nvim_win_set_buf(winid, payloadHeaders)
 end
 
-vim.api.nvim_set_hl(0, "ActiveTab", { underline = true })
-
 WinbarTabs.setup({
   winid = winid,
   withNewTabButton = true,
   highlight = {
-    active = "ActiveTab",
+    active = "Question",
   },
   tabs = {
     { name = "Headers", closeable = true, onEnter = onEnterHeaders },

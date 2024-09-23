@@ -10,7 +10,7 @@ function WinbarTabs.setup(config)
   WinbarTabs.winid = config.winid or vim.api.nvim_get_current_win()
 
   -- Highlights
-  WinbarTabs.highlight = { normal = "Normal", active = "Normal" }
+  WinbarTabs.highlight = { normal = "Normal", active = "Search" }
   if config.highlight and config.highlight.normal then
     WinbarTabs.highlight.normal = config.highlight.normal
   end
@@ -31,7 +31,7 @@ function WinbarTabs.render()
   if WinbarTabs.withNewTabButton then
     table.insert(parts, "%@v:lua.AddWinbarTab@[+]%X")
   end
-  vim.wo[WinbarTabs.winid].winbar = table.concat(parts, " | ")
+  vim.wo[WinbarTabs.winid].winbar = table.concat(parts, "")
 end
 
 function WinbarTabs.renderTab(index, tab)
@@ -39,10 +39,12 @@ function WinbarTabs.renderTab(index, tab)
   string = string .. "%" .. index .. "@v:lua.OnClickWinbarTab@"
   local highlight = WinbarTabs.highlight.normal
   if WinbarTabs.currentTab == index then
-    highlight = WinbarTabs.highlight.active
+    string = string .. "%#" .. WinbarTabs.highlight.active .. "# ▌ "
+  else
+    string = string .. " | "
   end
   string = string .. "%#" .. highlight .. "#"
-  string = string .. string.format("%-20s", tab.name)
+  string = string .. tab.name .. string.rep(" ", 10)
   string = string .. "%X"
   if tab.closeable then
     string = string .. "%" .. index .. "@v:lua.CloseWinbarTab@%X"
