@@ -40,7 +40,11 @@ function WinbarTabs.renderTab(index, tab)
   if WinbarTabs.currentTab == index then
     string = string .. "%#" .. WinbarTabs.highlight.active .. "# ▌ "
   else
-    string = string .. " | "
+    if index ~= 1 then
+      string = string .. " | "
+    else
+      string = string .. "  "
+    end
   end
   string = string .. "%#" .. highlight .. "#"
   string = string .. tab.name .. string.rep(" ", 10)
