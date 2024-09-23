@@ -28,8 +28,19 @@ local function createPayloadBuffer()
   return buffer
 end
 
+local function createTerminalBuffer()
+  local buffer = vim.api.nvim_create_buf(false, false)
+  vim.bo[buffer].modified = false
+  vim.api.nvim_set_current_buf(buffer)
+  vim.api.nvim_set_option_value("number", false, { scope = "local", win = winid })
+  vim.api.nvim_set_option_value("relativenumber", false, { scope = "local", win = winid })
+  vim.fn.termopen(vim.o.shell)
+  return buffer
+end
+
 local headersBuffer = createHeadersBuffer()
 local payloadHeaders = createPayloadBuffer()
+local terminal = createTerminalBuffer()
 
 WinbarTabs.setup({
   winid = winid,
@@ -39,5 +50,6 @@ WinbarTabs.setup({
   tabs = {
     { name = "Headers", closeable = true, buffer = headersBuffer },
     { name = "Payload", buffer = payloadHeaders },
+    { name = "Terminal", buffer = terminal },
   },
 })
