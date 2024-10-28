@@ -3,6 +3,7 @@
 ---@field private currentTab integer
 ---@field private winid integer
 ---@field private highlight WinbarTabs.config.highlight
+---@field private padding integer
 ---@field public setup fun(config: WinbarTabs.config)
 ---@field public setCurrentTab fun(index: integer): nil
 ---@field public addTab fun(tab: WinbarTabs.tab): nil
@@ -16,6 +17,7 @@
 ---@field winid? integer
 ---@field tabs WinbarTabs.tab[]
 ---@field highlight? WinbarTabs.config.highlight
+---@field padding? integer
 
 ---@class WinbarTabs.tab
 ---@field name string

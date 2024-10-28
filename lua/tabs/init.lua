@@ -3,10 +3,12 @@ local WinbarTabs = {}
 
 WinbarTabs.tabs = {}
 WinbarTabs.currentTab = 1
+WinbarTabs.padding = 10
 
 function WinbarTabs.setup(config)
   WinbarTabs.tabs = config.tabs
   WinbarTabs.winid = config.winid or vim.api.nvim_get_current_win()
+  WinbarTabs.padding = config.padding or 10
 
   WinbarTabs.highlight = { normal = "Normal", active = "Search" }
   if config.highlight and config.highlight.normal then
@@ -47,7 +49,7 @@ function WinbarTabs.renderTab(index, tab)
     end
   end
   string = string .. "%#" .. highlight .. "#"
-  string = string .. tab.name .. string.rep(" ", 10)
+  string = string .. tab.name .. string.rep(" ", WinbarTabs.padding)
   string = string .. "%X"
   if tab.closeable then
     string = string .. "%" .. index .. "@v:lua.CloseWinbarTab@%X"
