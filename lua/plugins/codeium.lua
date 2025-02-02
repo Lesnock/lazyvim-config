@@ -4,7 +4,7 @@ return {
     cmd = "Codeium",
     build = ":Codeium Auth",
     opts = {
-      enable_cmp_source = true,
+      enable_cmp_source = false,
       virtual_text = {
         enabled = true,
         key_bindings = {
