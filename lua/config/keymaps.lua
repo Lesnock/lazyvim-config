@@ -17,3 +17,5 @@ vim.keymap.set({ "n", "v" }, "<F11>", function() require("dap").step_into() end,
 -- stylua: ignore end
 
 vim.keymap.set({ "n" }, "<cr>", "zz", { desc = "Centralize screen" })
+
+vim.keymap.set({ "t" }, "<esc><esc>", "<C-\\><C-n>", { desc = "Quite terminal mode" })
