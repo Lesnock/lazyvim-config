@@ -19,3 +19,6 @@ vim.o.shiftwidth = 4   -- Number of spaces inserted when indenting
 
 -- ESLint
 vim.g.lazyvim_eslint_auto_format = true
+
+-- Disable check order
+vim.g.lazyvim_check_order = false
